@@ -1,8 +1,3 @@
-module github.com/natefinch/lumberjack
-
-require (
-	github.com/BurntSushi/toml v0.3.1
-	gopkg.in/yaml.v2 v2.2.2
-)
+module github.com/ah-forklib/lumberjack
 
 go 1.13

@@ -1,12 +1,7 @@
 // Package lumberjack provides a rolling logger.
 //
-// Note that this is v2.0 of lumberjack, and should be imported using gopkg.in
-// thusly:
-//
-//   import "gopkg.in/natefinch/lumberjack.v2"
-//
-// The package name remains simply lumberjack, and the code resides at
-// https://github.com/natefinch/lumberjack under the v2.0 branch.
+// Fork from
+//    https://github.com/natefinch/lumberjack
 //
 // Lumberjack is intended to be one part of a logging infrastructure.
 // It is not an all-in-one solution, but instead is a pluggable
@@ -402,7 +397,7 @@ func (l *Logger) oldLogFiles() ([]logInfo, error) {
 	if err != nil {
 		return nil, fmt.Errorf("can't read log file directory: %s", err)
 	}
-	logFiles := []logInfo{}
+	logFiles := make([]logInfo, 0)
 
 	prefix, ext := l.prefixAndExt()
 
@@ -493,7 +488,7 @@ func compressLogFile(src, dst string) (err error) {
 
 	defer func() {
 		if err != nil {
-			os.Remove(dst)
+			_ = os.Remove(dst)
 			err = fmt.Errorf("failed to compress log file: %v", err)
 		}
 	}()

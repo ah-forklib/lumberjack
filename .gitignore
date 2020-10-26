@@ -21,3 +21,9 @@ _testmain.go
 
 *.exe
 *.test
+
+### Editor ###
+.vscode/
+.ionide/
+.history/
+.idea/
